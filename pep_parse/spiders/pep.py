@@ -16,7 +16,8 @@ class PepSpider(scrapy.Spider):
 
     def parse_pep(self, response):
         number = re.findall(
-            r'\d+', response.css('h1.page-title::text').get().split(' – ')[0])
+            r'\d+', response.css('h1.page-title::text').get().split(' – ')[0]
+        )
         data = {
             'number': number,
             'name': response.css('h1.page-title::text').get(),

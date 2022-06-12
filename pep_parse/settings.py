@@ -1,5 +1,3 @@
-from pathlib import Path
-
 BOT_NAME = 'pep_parse'
 
 SPIDER_MODULES = ['pep_parse.spiders']
@@ -10,7 +8,7 @@ ROBOTSTXT_OBEY = True
 
 
 FEEDS = {
-    f'results/pep_%(time)s.csv': {
+    'results/pep_%(time)s.csv': {
         'format': 'csv',
         'fields': ['number', 'name', 'status'],
         'overwrite': True
