@@ -1,3 +1,4 @@
+import csv
 import datetime as dt
 from collections import defaultdict
 
@@ -17,11 +18,14 @@ class PepParsePipeline:
         results_dir = BASE_DIR / 'results'
         results_dir.mkdir(exist_ok=True)
         now = dt.datetime.now()
-        file_name = f'status_summary_{now.strftime(DATETIME_FORMAT)}.csv'
+        datetime_format = now.strftime(DATETIME_FORMAT)
+        file_name = f'status_summary_{datetime_format}.csv'
         downloads_dir = results_dir / file_name
-        count_status_dict = sum(self.status_dict.values())
         with open(downloads_dir, mode='w', encoding='utf-8') as f:
-            f.write('Статус,Количество\n')
-            for status, summ in self.status_dict.items():
-                f.write(f'{status},{summ}\n')
-            f.write(f'Total,{count_status_dict}\n')
+            writer = csv.writer(f, dialect='unix', quoting=csv.QUOTE_MINIMAL)
+            count_status_dict = sum(self.status_dict.values())
+            writer.writerows(
+                [['Статус', 'Количество'],
+                 *self.status_dict.items(),
+                 ['Total', count_status_dict]]
+            )
