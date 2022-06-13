@@ -1,5 +1,15 @@
+import logging
+import sys
 import scrapy
+
 from pep_parse.items import PepParseItem
+
+logging.basicConfig(level=logging.INFO,
+                    format=(
+                        '%(asctime)s %(filename)s[line:%(lineno)d]'
+                        '%(levelname)s %(message)s'),
+                    datefmt='%Y-%m-%d %H:%M:%S',
+                    handlers=[logging.StreamHandler(sys.stdout)])
 
 
 class PepSpider(scrapy.Spider):
@@ -22,4 +32,5 @@ class PepSpider(scrapy.Spider):
             'name': response.css('h1.page-title::text').get(),
             'status': response.css('dt:contains("Status") + dd::text').get()
         }
+        logging.info(response.url)
         yield PepParseItem(data)
