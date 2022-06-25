@@ -1,4 +1,3 @@
-### Hi there 👋, Dmitrii
 #### Асинхронный парсер документации PEP
 
 
@@ -8,8 +7,9 @@
 
 в первом список всех PEP: номер, название и статус.
 второй файл содержит сводку по статусам PEP — сколько найдено документов в каждом статусе (статус, количество).
-
-+ Используемые технологии: Python / Scrapy
+### Стек
++ Python 
++ Scrapy
 ### Как запустить проект:
 
 Клонировать репозиторий и перейти в него в командной строке:
@@ -35,5 +35,10 @@ pip install -r requirements.txt
 
 `scrapy crawl pep`
 
+### Автор
+
+[![Telegram](https://img.shields.io/badge/-Telegram-464646?style=flat-square&logo=Telegram)](https://t.me/harkort)
 [<img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/github.svg' alt='github' height='40'>](https://github.com/xrito)  
 
+
+[![Python](https://img.shields.io/badge/-Python-464646?style=flat-square&logo=Python)](https://www.python.org/)
